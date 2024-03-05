@@ -1,0 +1,160 @@
+#EJERCICIO 1
+def saludar():
+    # Solicitar al usuario su nombre
+    nombre = input("Por favor, introduce tu nombre: ")
+
+    # Verificar si el nombre está en la lista de excepciones
+    if nombre.lower() in ["ana", "juan", "pedro"]:
+        print("¡Hola, " + nombre + "! Pero parece que eres uno de los que no querían ser saludados.")
+    else:
+        print("¡Hola, " + nombre + "!")
+
+# Llamar a la función para saludar al usuario
+saludar()
+
+
+
+#EJERCICIO 2
+def invertir_lista():
+    # Solicitar al usuario el número de elementos de la lista
+    n = int(input("Ingrese el número de elementos de la lista: "))
+
+    # Solicitar al usuario los elementos de la lista
+    lista = []
+    for i in range(n):
+        elemento = input("Ingrese el elemento #" + str(i+1) + ": ")
+        lista.append(elemento)
+
+    # Invertir la lista
+    lista_invertida = lista[::-1]
+
+    # Imprimir la lista invertida
+    print("La lista invertida es:", lista_invertida)
+
+# Llamar a la función para invertir la lista
+invertir_lista()
+
+
+#EJERCICIO 3
+def fibonacci(n):
+    # Inicializar los primeros dos números de la serie de Fibonacci
+    fibonacci_sequence = [0, 1]
+
+    # Generar la serie de Fibonacci hasta el n-ésimo número
+    for i in range(2, n):
+        fibonacci_sequence.append(fibonacci_sequence[i - 1] + fibonacci_sequence[i - 2])
+
+    return fibonacci_sequence
+
+def main():
+    # Solicitar al usuario cuántos números de la serie de Fibonacci desea generar
+    cantidad = int(input("¿Cuántos números de la serie de Fibonacci desea generar? "))
+
+    # Generar la serie de Fibonacci
+    fibonacci_sequence = fibonacci(cantidad)
+
+    # Imprimir la serie de Fibonacci generada
+    print("La serie de Fibonacci con", cantidad, "números es:")
+    for num in fibonacci_sequence:
+        print(num)
+
+# Llamar a la función principal
+main()
+
+
+#EJERCICIO 4
+import random
+
+def adivinar_numero():
+    # Generar un número aleatorio entre 1 y 100
+    numero_objetivo = random.randint(1, 100)
+    intentos = 0
+
+    print("¡Bienvenido al juego de adivinar el número!")
+
+    while True:
+        # Solicitar al usuario que adivine el número
+        intento = int(input("Introduce un número entre 1 y 100: "))
+        intentos += 1
+
+        # Comprobar si el número es igual al número objetivo
+        if intento == numero_objetivo:
+            print("¡Felicidades! Has adivinado el número en", intentos, "intentos.")
+            break
+        # Proporcionar pistas al usuario si el número es mayor o menor que el número objetivo
+        elif intento < numero_objetivo:
+            print("El número es mayor. Intenta de nuevo.")
+        else:
+            print("El número es menor. Intenta de nuevo.")
+
+# Llamar a la función para iniciar el juego
+adivinar_numero()
+
+
+#EJERCICIO 5
+def es_primo(numero):
+    if numero <= 1:
+        return False
+    elif numero <= 3:
+        return True
+    elif numero % 2 == 0 or numero % 3 == 0:
+        return False
+    i = 5
+    while i * i <= numero:
+        if numero % i == 0 or numero % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def numeros_primos_en_rango(inicio, fin):
+    print("Números primos en el rango de", inicio, "a", fin, "son:")
+    for numero in range(inicio, fin + 1):
+        if es_primo(numero):
+            print(numero)
+
+def main():
+    inicio = int(input("Ingrese el número inicial del rango: "))
+    fin = int(input("Ingrese el número final del rango: "))
+    
+    print("Buscando números primos en el rango de", inicio, "a", fin, "...")
+    numeros_primos_en_rango(inicio, fin)
+
+# Llamar a la función principal
+main()
+
+
+#EJERCICIO 6
+def suma(a, b):
+    return a + b
+
+def resta(a, b):
+    return a - b
+
+def multiplicacion(a, b):
+    return a * b
+
+def division(a, b):
+    if b == 0:
+        return "No se puede dividir entre cero"
+    else:
+        return a / b
+
+def main():
+    # Solicitar al usuario dos números
+    num1 = float(input("Ingrese el primer número: "))
+    num2 = float(input("Ingrese el segundo número: "))
+
+    # Realizar operaciones básicas
+    resultado_suma = suma(num1, num2)
+    resultado_resta = resta(num1, num2)
+    resultado_multiplicacion = multiplicacion(num1, num2)
+    resultado_division = division(num1, num2)
+
+    # Imprimir resultados
+    print("Suma:", resultado_suma)
+    print("Resta:", resultado_resta)
+    print("Multiplicación:", resultado_multiplicacion)
+    print("División:", resultado_division)
+
+# Llamar a la función principal
+main()
